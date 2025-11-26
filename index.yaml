@@ -1,5 +1,127 @@
 apiVersion: v1
 entries:
+  mongodb:
+  - annotations:
+      fips: "true"
+      images: |
+        - name: kubectl
+          version: 1.34.2
+          image: registry-1.docker.io/bitnami/kubectl:latest
+        - name: mongodb
+          version: 8.2.2
+          image: registry-1.docker.io/bitnami/mongodb:latest
+        - name: mongodb-exporter
+          version: 0.47.1
+          image: registry-1.docker.io/bitnami/mongodb-exporter:latest
+        - name: nginx
+          version: 1.29.3
+          image: registry-1.docker.io/bitnami/nginx:latest
+        - name: os-shell
+          version: "5"
+          image: registry-1.docker.io/bitnami/os-shell:latest
+      licenses: Apache-2.0
+      tanzuCategory: service
+    apiVersion: v2
+    appVersion: 8.2.2
+    created: "2025-11-26T20:12:09.5450935+02:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.33.2
+    description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
+      it stores data in JSON-like documents. Automated scalability and high-performance.
+      Ideal for developing cloud native applications.
+    digest: d37e625496f15a81ff48337843b9b72677b4a82207736160ca2ebbf27babff0a
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+    urls:
+    - https://janitapojarvi.github.io/service-example-chart/charts/mongodb-18.1.10.tgz
+    version: 18.1.10
+  nats:
+  - apiVersion: v2
+    appVersion: 2.12.2
+    created: "2025-11-26T20:12:09.5471763+02:00"
+    description: A Helm chart for the NATS.io High Speed Cloud Native Distributed
+      Communications Technology.
+    digest: 0e3ecb2ba2a43ccfbee61aab81655c27ed88dcaa1e61641bba7c510c4241c69b
+    home: http://github.com/nats-io/k8s
+    icon: https://nats.io/img/nats-icon-color.png
+    keywords:
+    - nats
+    - messaging
+    - cncf
+    maintainers:
+    - email: info@nats.io
+      name: The NATS Authors
+      url: https://github.com/nats-io
+    name: nats
+    urls:
+    - https://janitapojarvi.github.io/service-example-chart/charts/nats-2.12.2.tgz
+    version: 2.12.2
+  redis:
+  - annotations:
+      fips: "true"
+      images: |
+        - name: kubectl
+          version: 1.34.2
+          image: registry-1.docker.io/bitnami/kubectl:latest
+        - name: os-shell
+          version: "5"
+          image: registry-1.docker.io/bitnami/os-shell:latest
+        - name: redis
+          version: 8.4.0
+          image: registry-1.docker.io/bitnami/redis:latest
+        - name: redis-exporter
+          version: 1.80.0
+          image: registry-1.docker.io/bitnami/redis-exporter:latest
+        - name: redis-sentinel
+          version: 8.4.0
+          image: registry-1.docker.io/bitnami/redis-sentinel:latest
+      licenses: Apache-2.0
+      tanzuCategory: service
+    apiVersion: v2
+    appVersion: 8.4.0
+    created: "2025-11-26T20:12:09.5531588+02:00"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.33.2
+    description: Redis(R) is an open source, advanced key-value store. It is often
+      referred to as a data structure server since keys can contain strings, hashes,
+      lists, sets and sorted sets.
+    digest: f4080b11069b1baed587a813f9d45f8b09fe56591ad4123696d5f53583ab25b6
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: redis
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/redis
+    urls:
+    - https://janitapojarvi.github.io/service-example-chart/charts/redis-24.0.0.tgz
+    version: 24.0.0
   service-example:
   - annotations:
       artifacthub.io/displayName: ServiceExample
@@ -9,7 +131,7 @@ entries:
         - name: Chart Repository
           url: https://github.com/janitapojarvi/service-example-chart
       artifacthub.io/maintainers: |
-        - name: jtapojarvi
+        - name: Jani Tapojärvi
           email: jani.tapojarvi@gmail.com
       artifacthub.io/operator: "false"
       artifacthub.io/prerelease: "false"
@@ -19,7 +141,50 @@ entries:
         - url: https://nats-io.github.io/k8s/helm/charts/
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-26T19:54:36.3222529+02:00"
+    created: "2025-11-26T20:12:09.5909191+02:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 24.0.0
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.1.10
+    - name: nats
+      repository: https://nats-io.github.io/k8s/helm/charts/
+      version: 2.12.2
+    description: A Helm chart for Kubernetes for service-example application
+    digest: 43aadf24800da3c72410a561689c94e2e34a5d43d750ceba8a46e1e04880434e
+    home: https://github.com/janitapojarvi/service-example-chart
+    maintainers:
+    - email: jani.tapojarvi@gmail.com
+      name: jtapojarvi
+    name: service-example
+    sources:
+    - https://github.com/janitapojarvi/service-example-chart
+    - https://github.com/vvitkovsky/ServiceExample
+    type: application
+    urls:
+    - https://janitapojarvi.github.io/service-example-chart/charts/service-example-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      artifacthub.io/displayName: ServiceExample
+      artifacthub.io/links: |
+        - name: Source Code
+          url: https://github.com/vvitkovsky/ServiceExample
+        - name: Chart Repository
+          url: https://github.com/janitapojarvi/service-example-chart
+      artifacthub.io/maintainers: |
+        - name: Jani Tapojärvi
+          email: jani.tapojarvi@gmail.com
+      artifacthub.io/operator: "false"
+      artifacthub.io/prerelease: "false"
+      artifacthub.io/recommendations: |-
+        - url: https://artifacthub.io/packages/helm/bitnami/mongodb
+        - url: https://artifacthub.io/packages/helm/bitnami/redis
+        - url: https://nats-io.github.io/k8s/helm/charts/
+    apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-11-26T20:12:09.5727826+02:00"
     dependencies:
     - name: redis
       repository: https://charts.bitnami.com/bitnami
@@ -42,6 +207,6 @@ entries:
     - https://github.com/vvitkovsky/ServiceExample
     type: application
     urls:
-    - charts/service-example-0.1.0.tgz
+    - https://janitapojarvi.github.io/service-example-chart/charts/service-example-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-26T19:54:36.3035164+02:00"
+generated: "2025-11-26T20:12:09.5399618+02:00"
