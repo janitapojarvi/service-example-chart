@@ -1,0 +1,28 @@
+apiVersion: v2
+name: service-example
+description: A Helm chart for Kubernetes for service-example application
+
+type: application
+
+version: 0.1.0
+appVersion: "1.0.0"
+
+maintainers:
+  - name: Jani Tapojärvi
+    email: jani.tapojarvi@gmail.com
+home: https://github.com/janitapojarvi/service-example-chart
+sources:
+  - https://github.com/janitapojarvi/service-example-chart
+  - https://github.com/vvitkovsky/ServiceExample
+
+
+dependencies:
+  - name: redis
+    version: "24.0.0"
+    repository: "https://charts.bitnami.com/bitnami"
+  - name: mongodb
+    version: "18.1.10"
+    repository: "https://charts.bitnami.com/bitnami"
+  - name: nats
+    version: "2.12.2"
+    repository: "https://nats-io.github.io/k8s/helm/charts/"
