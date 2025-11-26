@@ -9,7 +9,7 @@ entries:
         - name: Chart Repository
           url: https://github.com/janitapojarvi/service-example-chart
       artifacthub.io/maintainers: |
-        - name: Jani Tapojärvi
+        - name: jtapojarvi
           email: jani.tapojarvi@gmail.com
       artifacthub.io/operator: "false"
       artifacthub.io/prerelease: "false"
