@@ -8,7 +8,7 @@ version: 0.1.0
 appVersion: "1.0.0"
 
 maintainers:
-  - name: Jani Tapojärvi
+  - name: jtapojarvi
     email: jani.tapojarvi@gmail.com
 home: https://github.com/janitapojarvi/service-example-chart
 sources:
@@ -26,3 +26,20 @@ dependencies:
   - name: nats
     version: "2.12.2"
     repository: "https://nats-io.github.io/k8s/helm/charts/"
+    
+annotations:
+  artifacthub.io/displayName: ServiceExample
+  artifacthub.io/links: |
+    - name: Source Code
+      url: https://github.com/vvitkovsky/ServiceExample
+    - name: Chart Repository
+      url: https://github.com/janitapojarvi/service-example-chart
+  artifacthub.io/maintainers: |
+    - name: Jani Tapojärvi
+      email: jani.tapojarvi@gmail.com
+  artifacthub.io/operator: "false"
+  artifacthub.io/prerelease: "false"
+  artifacthub.io/recommendations: |
+    - url: https://artifacthub.io/packages/helm/bitnami/mongodb
+    - url: https://artifacthub.io/packages/helm/bitnami/redis
+    - url: https://nats-io.github.io/k8s/helm/charts/
