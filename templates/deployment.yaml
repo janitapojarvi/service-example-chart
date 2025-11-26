@@ -39,7 +39,6 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
           env:
             {{- if .Values.mongodb.enabled }}
                 {{- include "service-example.mongodb-connection-string" . | nindent 14 }}
